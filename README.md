@@ -1,61 +1,48 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# PIMEL - Piattaforma Blog per Pedagogista (Laravel 11)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**PIMEL (Pedagogia In Movimento)** è un'applicazione web full-stack costruita con **Laravel** che funge da piattaforma digitale completa per un consulente pedagogico. Il progetto include un blog ricco di funzionalità, una sezione per la presentazione dei servizi, e un pannello di amministrazione (CMS) personalizzato per la gestione totale dei contenuti.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🖼️ Panoramica del Progetto
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+| Homepage Pubblica | Articolo del Blog | Dashboard Admin | Gestione Contenuti (CMS) |
+| :---: | :---: | :---: | :---: |
+| ![Screenshot della Homepage](./media/screenshot-homepage.png) | ![Screenshot di un articolo](./media/screenshot-article.png) | ![Screenshot della Dashboard Admin](./media/screenshot-admin-dashboard.png) | ![Screenshot della gestione articoli](./media/screenshot-admin-articles.png) |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## ✨ Feature Principali
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Area Pubblica (Client-Facing)
+*   **Blog Dinamico:** Articoli organizzati in rubriche, con funzionalità di ordinamento (per data, popolarità) e filtraggio.
+*   **Interazione Utente:** Sistema di **commenti** (con risposte nidificate) e **"Mi Piace"** (gestiti via AJAX per un'esperienza fluida).
+*   **Gestione Servizi:** Sezione dedicata alla presentazione dei servizi offerti dal professionista.
+*   **Autenticazione e Profilo Utente:** Registrazione, login, e un'area profilo dedicata per gli utenti.
+*   **Newsletter:** Form di iscrizione con selezione delle rubriche di interesse.
+*   **Form di Contatto:** Modulo per l'invio di messaggi diretti, con notifica via email all'amministratore.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Area Amministrativa (Pannello CMS)
+*   **Dashboard Riepilogativa:** Una homepage per l'admin con accesso rapido a tutte le sezioni di gestione.
+*   **CRUD completo per gli Articoli:** Creazione, modifica e cancellazione di articoli con gestione di immagini (upload/rimozione), stato (Bozza, Pubblicato, Pianificato, Archiviato) e scheduling delle pubblicazioni.
+*   **Gestione Rubriche e Servizi:** Interfacce CRUD per organizzare le categorie del blog e le pagine dei servizi.
+*   **Moderazione Commenti:** Pannello per approvare o eliminare i commenti lasciati dagli utenti.
+*   **Gestione Iscritti Newsletter:** Visualizzazione degli iscritti e modifica delle loro preferenze.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🏛️ Architettura e Best Practice Laravel
 
-## Laravel Sponsors
+Questo progetto è stato costruito ponendo forte enfasi sulla scrittura di codice pulito, manutenibile e scalabile, sfruttando le migliori practice del framework Laravel.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*   **Framework:** **Laravel 11** (PHP 8.2+)
+*   **Architettura:**
+    *   **Pattern MVC:** Rigorosa separazione delle responsabilità.
+    *   **Form Requests** (`StoreArticleRequest`, `StoreRubricRequest`): Per disaccoppiare la logica di validazione dai controller.
+    *   **Actions** (`SaveArticleAction`): Per incapsulare logiche di business complesse e riutilizzabili.
+    *   **Observers** (`ArticleObserver`): Per automatizzare task come la generazione dello slug e degli excerpt.
+    *   **Policies** (`ArticlePolicy`): Per una gestione granulare e centralizzata dei permessi di autorizzazione.
+*   **Database:**
+    *   Schema progettato e gestito tramite **Migrations**.
+    *   Popolamento dei dati di test tramite **Seeders** e **Factories**.
+    *   Relazioni Eloquent complesse (es. Many-to-Many tra rubriche e iscritti, polimorfiche se necessarie).
+*   **Frontend:**
+    *   **Vite:** Per la compilazione e l'ottimizzazione degli asset (CSS e JS).
